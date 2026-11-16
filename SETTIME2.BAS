@@ -1,5 +1,6 @@
-0 ' SET THE RTC CLOCK 1/12/2026
+0 ' SET THE RTC CLOCK 11/16/2026
 10 INPUT"Enter current time (12 hour) Hours,Minutes,Seconds,AM/PM)? ",H,M,S,AMPM$
+11 IF (AMPM$="AM" OR AMPM$="am" OR AMPM$="A" OR AMPM$="a") AND H=12 THEN H=0
 15 IF AMPM$="PM" OR AMPM$="pm" OR AMPM$="P" OR AMPM$="p" THEN H=H+12
 20 INPUT"Enter current MONTH(1-12),DAY(1-31),YEAR(20XX) ?",MONTH,DAY,YEAR
 25 SAVEYEAR=YEAR:SAVEMIN=M:SAVEMONTH=MONTH
@@ -95,7 +96,7 @@
 
 1590 IF (H>12) THEN H=H-12:PM=1
 1600 IF (H=12) THEN PM=1
-1610 IF (H=0) THEN H=12
+1610 IF (H=0) THEN H=12:PM=0
 1620 IF (PM=0) THEN PRINT "The current time is: " H":"M":"S" AM"
 1630 IF (PM=1) THEN PRINT "The current time is: " H":"M":"S" PM"
 1640 PRINT "The current date is: " WEEKDAY$" "MONTH"/"DAY"/"YEAR
